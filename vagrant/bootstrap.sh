@@ -59,7 +59,7 @@ if [ "$VAGRANT" = true ]; then
   # Install yarn and nodejs
   apt-get install -y nodejs yarn
   # Install nodejs dependencies
-  HOME=/home/$RUN_AS_USER sudo -u $RUN_AS_USER bash -c 'cd /usr/local/src/timesketch && yarn install'
+  HOME=/home/$RUN_AS_USER sudo -u $RUN_AS_USER bash -c 'cd /usr/local/src/timesketch && yarn install --no-bin-links'
 fi
 
 # Install Timesketch
