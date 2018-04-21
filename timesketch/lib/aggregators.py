@@ -46,13 +46,13 @@ def heatmap(es_client, sketch_id, query_string, query_filter, query_dsl,
         return []
 
     DAYS = {
-        1: u'Mon',
-        2: u'Tue',
-        3: u'Wed',
-        4: u'Thu',
-        5: u'Fri',
-        6: u'Sat',
-        7: u'Sun',
+        u'Mon': 1,
+        u'Tue': 2,
+        u'Wed': 3,
+        u'Thu': 4,
+        u'Fri': 5,
+        u'Sat': 6,
+        u'Sun': 7,
     }
 
     aggregation = {
