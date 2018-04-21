@@ -59,10 +59,7 @@ def heatmap(es_client, sketch_id, query_string, query_filter, query_dsl,
         u'byDay': {
             u'terms': {
                 u'script': {
-                    u'id': 'dateaggregation',
-                    u'params': {
-                        u'date_field': 'datetime',
-                        u'format': 'EE'
+                    u'id': 'get_day'
                     }
                 }
             },
@@ -73,10 +70,7 @@ def heatmap(es_client, sketch_id, query_string, query_filter, query_dsl,
                             u'_term': 'asc'
                         },
                         u'script': {
-                            u'id': 'dateaggregation',
-                            u'params': {
-                                u'date_field': 'datetime',
-                                u'format': 'HH'
+                            u'id': 'get_hour'
                             }
                         },
                         u'size': 24
