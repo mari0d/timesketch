@@ -400,7 +400,7 @@ class ElasticsearchDataStore(object):
         script = {
             u'script': {
                 u'lang': u'painless',
-                u'file': script_name,
+                u'id': script_name,
                 u'params': {
                     u'timesketch_label': {
                         u'name': str(label),
