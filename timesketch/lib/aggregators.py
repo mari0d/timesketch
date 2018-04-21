@@ -58,9 +58,7 @@ def heatmap(es_client, sketch_id, query_string, query_filter, query_dsl,
     aggregation = {
         u'byDay': {
             u'terms': {
-                u'script': {
-                    u'id': 'get_day'
-                }
+                u'script': u'doc.datetime.value.toString(\'EE\')'   
             },
             u'aggs': {
                 u'byHour': {
@@ -68,9 +66,7 @@ def heatmap(es_client, sketch_id, query_string, query_filter, query_dsl,
                         u'order': {
                             u'_term': 'asc'
                         },
-                        u'script': {
-                            u'id': 'get_hour'
-                        },
+                        u'script': u'doc.datetime.value.getHourOfDay()',
                         u'size': 24
                     }
                 }
