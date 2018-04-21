@@ -399,7 +399,6 @@ class ElasticsearchDataStore(object):
             script_name = u'toggle_label'
         script = {
             u'script': {
-                u'lang': u'painless',
                 u'id': script_name,
                 u'params': {
                     u'timesketch_label': {
