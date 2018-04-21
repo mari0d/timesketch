@@ -15,7 +15,7 @@
 
 # Max number of search hits to chart
 # TDOD: Move to config
-MAX_RESULT_LIMIT = 300000
+MAX_RESULT_LIMIT = 1000000
 
 
 def heatmap(es_client, sketch_id, query_string, query_filter, query_dsl,
