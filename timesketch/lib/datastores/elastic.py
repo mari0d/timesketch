@@ -327,11 +327,12 @@ class ElasticsearchDataStore(object):
             for event in result[u'hits'][u'hits']:
                 yield event
 
-    def get_event(self, searchindex_id, event_id):
+    def get_event(self, searchindex_id, event_type=u'_all', event_id):
         """Get one event from the datastore.
 
         Args:
             searchindex_id: String of ElasticSearch index id
+            event_type: String of ElasticSearch document type
             event_id: String of ElasticSearch event id
 
         Returns:
@@ -343,6 +344,7 @@ class ElasticsearchDataStore(object):
             # pylint: disable=unexpected-keyword-arg
             return self.client.get(
                 index=searchindex_id,
+                doc_type=event_type,
                 id=event_id,
                 _source_exclude=[u'timesketch_label'])
         except NotFoundError:
@@ -382,7 +384,7 @@ class ElasticsearchDataStore(object):
             toggle: Optional boolean value if the label should be toggled
             (add/remove). The default is False.
         """
-        doc = self.client.get(index=searchindex_id, id=event_id)
+        doc = self.client.get(index=searchindex_id, doc_type=event_type, id=event_id)
         try:
             doc[u'_source'][u'timesketch_label']
         except KeyError:
