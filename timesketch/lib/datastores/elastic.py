@@ -327,13 +327,13 @@ class ElasticsearchDataStore(object):
             for event in result[u'hits'][u'hits']:
                 yield event
 
-    def get_event(self, searchindex_id, event_type=u'_all', event_id):
+    def get_event(self, searchindex_id, event_id, event_type=u'_all'):
         """Get one event from the datastore.
 
         Args:
             searchindex_id: String of ElasticSearch index id
-            event_type: String of ElasticSearch document type
             event_id: String of ElasticSearch event id
+            event_type (optional, default is '_all'): String of ElasticSearch document type
 
         Returns:
             Event document in JSON format

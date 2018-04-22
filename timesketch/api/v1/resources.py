@@ -763,7 +763,7 @@ class EventResource(ResourceMixin, Resource):
         if searchindex_id not in indices:
             abort(HTTP_STATUS_CODE_BAD_REQUEST)
 
-        result = self.datastore.get_event(searchindex_id, event_type, event_id)
+        result = self.datastore.get_event(searchindex_id, event_id, event_type)
 
         event = Event.query.filter_by(
             sketch=sketch, searchindex=searchindex,
