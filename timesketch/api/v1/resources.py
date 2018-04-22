@@ -755,7 +755,6 @@ class EventResource(ResourceMixin, Resource):
         searchindex_id = args.get(u'searchindex_id')
         searchindex = SearchIndex.query.filter_by(
             index_name=searchindex_id).first()
-        event_type = u'sketch_id'
         event_id = args.get(u'event_id')
         indices = [t.searchindex.index_name for t in sketch.timelines]
 
@@ -763,7 +762,9 @@ class EventResource(ResourceMixin, Resource):
         if searchindex_id not in indices:
             abort(HTTP_STATUS_CODE_BAD_REQUEST)
 
-        result = self.datastore.get_event(searchindex_id, event_id, event_type)
+        # Calling get_event without an (optional) type since the API does not 
+        # support event types. event_id should be unique to searchindex.
+        result = self.datastore.get_event(searchindex_id, event_id)
 
         event = Event.query.filter_by(
             sketch=sketch, searchindex=searchindex,

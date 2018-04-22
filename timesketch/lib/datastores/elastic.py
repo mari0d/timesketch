@@ -333,7 +333,7 @@ class ElasticsearchDataStore(object):
         Args:
             searchindex_id: String of ElasticSearch index id
             event_id: String of ElasticSearch event id
-            event_type (optional, default is '_all'): String of ElasticSearch document type
+            event_type (default '_all'): String of ElasticSearch document type
 
         Returns:
             Event document in JSON format
